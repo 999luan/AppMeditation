@@ -28,7 +28,7 @@
   height: 10%;
   background: none;
   font-size: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   border: 2px solid white;
   transition: all 0.5s ease;
@@ -39,7 +39,7 @@
   height: 120px;
   width: 120px;
   padding: 30px;
-  border-radius: 50%;
+  border-radius: 15%;
 }
 .selecionaMusica button:nth-child(1) {
   background: #4972a1;
@@ -89,5 +89,5 @@ video {
   top: 0%;
   left: 0%;
   width: 100%;
-  z-index: -10;
+  z-index: -1;
 }
