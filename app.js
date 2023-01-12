@@ -33,21 +33,33 @@ class App {
   }
 
   selectSound(e) {
-    let sound = e.target.getAttribute("data-sound");
-    let video = e.target.getAttribute("data-video");
+    // Get the button that was clicked
+    const button = e.target;
+
+    // Check if the button already has the 'disabled' class
+    if (button.classList.contains("disabled")) return;
+
+    const sound = button.getAttribute("data-sound");
+    const video = button.getAttribute("data-video");
 
     if (!sound || !video) {
-      console.warn("Could not find sound or video source");
+      console.error(
+        "Could not find sound or video source. Make sure to have the data-sound and data-video attributes correctly set on the buttons element"
+      );
       return;
-    }
 
-    this.song.src = sound;
-    this.video.src = video;
-    this.song.addEventListener("loadedmetadata", () => {
-      if (this.song.readyState > 0) {
-        this.checkPlay(this.song);
-      }
-    });
+      // Add the 'disabled' class to the button
+      button.classList.add("disabled");
+
+      this.song.src = sound;
+      this.video.src = video;
+
+      // Attach an event listener to the song's `canplay` event
+      this.song.addEventListener("canplay", () => {
+        // Remove the disabled class when the song is ready
+        button.classList.remove("disabled");
+      });
+    }
   }
   togglePlay() {
     this.checkPlay(this.song);
