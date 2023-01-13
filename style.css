@@ -34,23 +34,6 @@
   transition: all 0.5s ease;
 }
 
-.selecionaMusica button {
-  border: none;
-  height: 120px;
-  width: 120px;
-  padding: 30px;
-  border-radius: 15%;
-}
-.selecionaMusica button:nth-child(1) {
-  background: #4972a1;
-}
-.selecionaMusica button:nth-child(2) {
-  background: #a14f49;
-}
-.selecionaMusica button img {
-  height: 100%;
-}
-
 .selecionaTempo button:hover {
   background: white;
   color: black;
