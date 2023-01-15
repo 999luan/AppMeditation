@@ -7,6 +7,7 @@ class App {
     this.sounds = document.querySelectorAll(".selecionaMusica button");
     this.mostraTempo = document.querySelector(".mostraTempo");
     this.selecionaTempo = document.querySelectorAll(".selecionaTempo button");
+    this.volumeControl = document.querySelector(".volume-control");
     this.outlineLength = this.outline.getTotalLength();
     this.duracaoFalsa = 600;
 
@@ -30,6 +31,12 @@ class App {
     });
 
     this.song.ontimeupdate = this.animate.bind(this);
+    this.volumeControl.addEventListener("input", (e) => {
+      this.song.volume = e.target.value;
+    });
+    this.song.addEventListener("volumechange", () => {
+      this.volumeControl.value = this.song.volume;
+    });
   }
 
   selectSound(e) {
@@ -87,22 +94,18 @@ class App {
   animate() {
     let currentTime = this.song.currentTime;
     let elapsed = this.duracaoFalsa - currentTime;
-    let seconds = Math.floor(elapsed % 60);
+    let seconds = ("0" + Math.floor(elapsed % 60)).slice(-2);
     let minutes = Math.floor(elapsed / 60);
 
     let progresso =
       this.outlineLength -
       (currentTime / this.duracaoFalsa) * this.outlineLength;
     this.outline.style.strokeDashoffset = progresso;
-
-    this.mostraTempo.textContent = `${minutes}:${
-      seconds < 10 ? "0" + seconds : seconds
-    }`;
+    this.mostraTempo.textContent = `${minutes}:${seconds}`;
     if (currentTime >= this.duracaoFalsa) {
       this.song.pause();
       this.song.currentTime = 0;
       this.play.src = "./svg/play.svg";
-      this.video.pause();
     }
   }
 }
