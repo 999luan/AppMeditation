@@ -1,4 +1,6 @@
 Projeto Readme
+
+
 Este projeto é um simples player de música que permite ao usuário reproduzir/pausar, além de selecionar uma duração para a música e exibir o tempo restante. Ele é específico para uma aplicação de meditação sonora.
 
 A classe App controla toda a funcionalidade do player de música. Ela usa JavaScript para selecionar e manipular elementos do DOM e adicionar listeners de eventos para interações do usuário. A classe possui vários métodos que lidam com diferentes ações, como initEventListeners que configura todos os listeners de eventos para os botões e música, selectSound que muda a música e o vídeo quando um botão é clicado, checkPlay que alterna o estado de reprodução/pausa da música, selectDuration que muda a duração da música e animate que atualiza o progresso visual da música e o tempo restante.
